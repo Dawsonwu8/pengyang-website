@@ -1,74 +1,51 @@
 ---
-// 我們將網站標題和描述定義成變數，方便管理
-const siteTitle = "朋洋映像國際娛樂股份有限公司";
-const pageTitle = "朋洋映像";
-const subtitle = "光影敘事，成就品牌。歡迎來到我們的網站。";
+// 檔案路徑: src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="zh-TW">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{siteTitle}</title>
+<Layout title="首頁">
+	<div class="hero">
+		<img src="/hero-image.png" alt="朋洋映像主視覺" class="hero-image" />
+		<div class="hero-text">
+			<h1>朋洋映像</h1>
+			<p>光影敘事，成就品牌故事。朋洋映像整合行銷。</p>
+		</div>
+	</div>
+</Layout>
 
-    <style>
-        /* 全域設定 */
-        body {
-            background-color: #111; /* 深色背景 */
-            color: #fff; /* 白色文字 */
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* 主視覺區塊 */
-        .hero {
-            position: relative;
-            height: 60vh; /* 佔螢幕 60% 的高度 */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        /* 背景圖片 */
-        .hero-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 讓圖片填滿容器，不變形 */
-            z-index: -1; /* 把它放到文字後面 */
-            opacity: 0.3; /* 讓圖片變暗，突顯文字 */
-        }
-
-        /* 標題 */
-        h1 {
-            font-size: 3.5rem; /* 放大標題 */
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* 文字陰影增加立體感 */
-        }
-
-        /* 副標題 */
-        p {
-            font-size: 1.25rem;
-            max-width: 600px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-        }
-    </style>
-</head>
-<body>
-    <main>
-        <div class="hero">
-            <img src="/hero-image.png" alt="朋洋映像主視覺" class="hero-image" />
-            <h1>{pageTitle}</h1>
-            <p>{subtitle}</p>
-        </div>
-        </main>
-</body>
-</html>
+<style>
+	.hero {
+		position: relative; /* 作為文字定位的基準 */
+		height: 80vh; /* 佔螢幕 80% 的高度 */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: -6rem; /* 讓圖片往上，與導覽列融合 */
+	}
+	.hero-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover; /* 讓圖片填滿容器，不變形 */
+		z-index: -1;
+		opacity: 0.3; /* 調暗背景圖，讓文字更突出 */
+	}
+	.hero-text {
+		text-align: center;
+		padding: 0 20px;
+	}
+	.hero-text h1 {
+		font-size: 4rem;
+		color: white; /* 強制設為純白以求最高對比 */
+		text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* 加上更深的文字陰影增加立體感 */
+		margin-bottom: 1rem;
+	}
+	.hero-text p {
+		font-size: 1.5rem;
+		color: #e0e0e0; /* 使用高亮度的灰色 */
+		text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+		max-width: 600px;
+	}
+</style>

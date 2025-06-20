@@ -1,0 +1,57 @@
+---
+// 檔案路徑: src/components/Header.astro
+---
+<header>
+  <nav>
+    <a href="/" class="logo">朋洋映像</a>
+    <div class="nav-links">
+      <a href="/">首頁</a>
+      <a href="/portfolio">作品案例</a>
+      </div>
+  </nav>
+</header>
+
+<style>
+  header {
+    margin: 0;
+    padding: 1rem 1.5rem;
+    background: rgba(20, 22, 26, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 60ch;
+  }
+  .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+  .logo:hover {
+    color: #ddd;
+  }
+  .nav-links a {
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    color: #bbb;
+    text-decoration: none;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .nav-links a:hover {
+    color: white;
+    border-bottom-color: rgb(var(--accent));
+  }
+</style>

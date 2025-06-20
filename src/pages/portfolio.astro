@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// 修正了所有標題中的引號問題
+const categories = {
+  creative: {
+    title: "創意影片",
+    projects: [
+      { title: "光纖之舞", imgSrc: 'https://i.imgur.com/Asa9308.jpeg' },
+      { title: "超現實建築", imgSrc: 'https://i.imgur.com/G5y7r3j.jpeg' },
+      { title: "數據宇宙", imgSrc: 'https://i.imgur.com/gL2r9m9.jpeg' },
+      { title: "風格化產品演示", imgSrc: 'https://i.imgur.com/YxVQQkP.jpeg' },
+    ]
+  },
+  events: {
+    title: "活動紀錄",
+    projects: [
+      { title: "2025 Computex AI 影像論壇", imgSrc: 'https://i.imgur.com/kSgR4gD.jpeg' },
+    ]
+  },
+  vfx: {
+    title: "特效展示",
+    projects: [
+      { title: "時空晶體", imgSrc: 'https://i.imgur.com/bQ4o0f5.jpeg' },
+      { title: "液態城市", imgSrc: 'https://i.imgur.com/O6X7z6p.jpeg' },
+    ]
+  },
+  cinematic: {
+    title: "電影風格",
+    projects: [
+      { title: "霓虹下的獨白", imgSrc: 'https://i.imgur.com/mZk8c8Y.jpeg' },
+      { title: "遺落的史詩", imgSrc: 'https://i.imgur.com/wP0c8v9.jpeg' },
+    ]
+  },
+  animation: {
+    title: "卡通動畫",
+    projects: [
+      { title: "動畫(3D)：方塊寵物的冒險", imgSrc: 'https://i.imgur.com/fJq3D7H.jpeg' },
+      { title: "動畫(2D)：夏日午後的飛行器", imgSrc: 'https://i.imgur.com/c5j4b7g.jpeg' },
+    ]
+  }
+};
+---
+
+<Layout title="作品案例">
+  <div class="portfolio-header">
+    <h1>作品案例</h1>
+    <p>這裡是我們引以為傲的專案。從概念發想到最終成品，我們致力於打造最具影響力的視覺故事。</p>
+  </div>
+
+  <div class="filter-buttons">
+    <button>全部</button>
+    <button>創意影片</button>
+    <button>活動紀錄</button>
+    <button>特效展示</button>
+    <button>電影風格</button>
+    <button>卡通動畫</button>
+  </div>
+
+  <div class="portfolio-list">
+    {Object.values(categories).map(category => (
+      <section class="category-section">
+        <h2 class="category-title">{category.title}</h2>
+        <div class="portfolio-grid">
+          {category.projects.map(project => (
+            <div class="project-card">
+              <a href="#" target="_blank">
+                <img src={project.imgSrc} alt={project.title} class="project-image"/>
+                <div class="project-info">
+                  <h3 class="project-title">{project.title}</h3>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</Layout>
+
+<style>
+  .portfolio-header { text-align: center; margin-bottom: 3rem; }
+  .filter-buttons { display: flex; justify-content: center; gap: 1rem; margin-bottom: 4rem; flex-wrap: wrap; }
+  .filter-buttons button { background: #2a2c32; color: #f0f0f0; border: 1px solid #444; border-radius: 20px; padding: 0.5rem 1.5rem; font-size: 1rem; cursor: pointer; transition: all 0.2s ease; }
+  .filter-buttons button:hover { background: #3a3c42; }
+  .category-section { margin-bottom: 4rem; }
+  .category-title { font-size: 2rem; margin-bottom: 2rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgb(var(--accent)); display: inline-block; }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .project-card { background: #1f2126; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); }
+  .project-card a { display: block; text-decoration: none; color: white; }
+  .project-image { width: 100%; height: 200px; object-fit: cover; display: block; background-color: #333; }
+  .project-info { padding: 1.5rem; }
+  .project-title { margin: 0; font-size: 1.25rem; }
+</style>
